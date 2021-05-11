@@ -1,0 +1,16 @@
+logging:
+    level:
+        org:
+            springframework: DEBUG
+server:
+  port: 8080
+spring:
+  datasource:
+    password: ${password}
+    platform: postgres
+    url: ${url}
+    username: ${user}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
