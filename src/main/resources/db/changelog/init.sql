@@ -7,7 +7,7 @@ CREATE TABLE fun_user
     email    text,
     language text,
     password text,
-    score    int,
+    score    integer,
     CONSTRAINT fun_user_pk PRIMARY KEY (id)
 );
 -- rollback DROP TABLE fun_user;
@@ -27,11 +27,10 @@ CREATE TABLE fun_post
 (
 
     id           serial,
-    fun_user_id  int,
+    fun_user_id  integer,
     content_url  text,
     content_text text,
     title        text,
-    tag_id       int,
     CONSTRAINT fun_user_id_fk FOREIGN KEY (fun_user_id) REFERENCES fun_user (id),
     CONSTRAINT fun_post_id PRIMARY KEY (id)
 );
@@ -40,8 +39,8 @@ CREATE TABLE fun_post
 
 CREATE TABLE fun_post_fun_tag
 (
-    fun_tag_id  int,
-    fun_post_id int,
+    fun_tag_id  integer,
+    fun_post_id integer,
     CONSTRAINT fun_post_fun_tag_tag_id_fk FOREIGN KEY (fun_tag_id) REFERENCES fun_tag (id),
     CONSTRAINT fun_post_fun_tag_fun_post_id_fk FOREIGN KEY (fun_post_id) REFERENCES fun_post (id),
     CONSTRAINT fun_post_fun_tag_pk PRIMARY KEY (fun_tag_id, fun_post_id)
@@ -52,8 +51,8 @@ CREATE TABLE fun_post_fun_tag
 
 CREATE TABLE fun_like
 (
-    fun_user_id int,
-    fun_post_id int,
+    fun_user_id integer,
+    fun_post_id integer,
     CONSTRAINT fun_user_id_fk_fn_like FOREIGN KEY (fun_user_id) REFERENCES fun_user (id),
     CONSTRAINT fun_post_id_fk_fn_like FOREIGN KEY (fun_post_id) REFERENCES fun_post (id),
     CONSTRAINT fun_like_pk PRIMARY KEY (fun_user_id, fun_post_id)
@@ -63,9 +62,10 @@ CREATE TABLE fun_like
 
 CREATE TABLE fun_comment
 (
+    entry bigint,
     id serial PRIMARY KEY,
-    fun_post_id int,
-    fun_user_id int,
+    fun_post_id integer,
+    fun_user_id integer,
     content text,
     CONSTRAINT fun_comment_fun_user_id_fk FOREIGN KEY (fun_user_id) REFERENCES fun_user (id),
     CONSTRAINT fun_comment_fun_post_id_fk FOREIGN KEY (fun_post_id) REFERENCES fun_post (id)
