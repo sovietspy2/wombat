@@ -62,7 +62,7 @@ CREATE TABLE fun_like
 
 CREATE TABLE fun_comment
 (
-    entry bigint,
+    entry integer,
     id serial PRIMARY KEY,
     fun_post_id integer,
     fun_user_id integer,

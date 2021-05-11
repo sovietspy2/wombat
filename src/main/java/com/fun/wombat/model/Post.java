@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "fun_post")
 public class Post {
     @Id
-    private Long id;
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "fun_user_id")
@@ -24,7 +24,7 @@ public class Post {
 
     private String contentUrl;
 
-    private String content;
+    private String contentText;
 
     private String title;
 

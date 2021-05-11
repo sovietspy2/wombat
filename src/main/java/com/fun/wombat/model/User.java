@@ -2,18 +2,18 @@ package com.fun.wombat.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Data
 @Table(name = "fun_user")
 public class User {
     @Id
-    private Long id;
+    private Integer id;
     private String name;
     private String email;
+
+    @Enumerated(EnumType.STRING)
     private Language language;
-    private Long score;
+    private Integer score;
 }

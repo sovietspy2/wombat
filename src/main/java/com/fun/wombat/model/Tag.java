@@ -14,7 +14,7 @@ import java.util.List;
 @Table(name = "fun_tag")
 public class Tag {
     @Id
-    private Long id;
+    private Integer id;
     private String name;
     private String description;
 
