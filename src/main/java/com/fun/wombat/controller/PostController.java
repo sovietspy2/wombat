@@ -22,11 +22,13 @@ public class PostController {
         this.repository = repository;
     }
 
+    @CrossOrigin
     @GetMapping("/posts")
     public List<Post> all() {
         return repository.findAll();
     }
 
+    @CrossOrigin
     @PostMapping("/posts/create")
     public ResponseEntity createPost(@RequestPart MultipartFile file, @RequestParam MultiValueMap<String,String> paramMap) {
 
