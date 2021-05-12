@@ -3,10 +3,7 @@ package com.fun.wombat.model;
 import lombok.Data;
 import org.w3c.dom.stylesheets.LinkStyle;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -14,6 +11,7 @@ import java.util.List;
 @Table(name = "fun_tag")
 public class Tag {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String description;

@@ -17,6 +17,7 @@ import java.util.List;
 @Table(name = "fun_post")
 public class Post {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
