@@ -7,16 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 @Slf4j
-@Controller
+@RestController
 public class PostController {
 
     private final PostRepository repository;
@@ -26,7 +23,7 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    List<Post> all() {
+    public List<Post> all() {
         return repository.findAll();
     }
 
