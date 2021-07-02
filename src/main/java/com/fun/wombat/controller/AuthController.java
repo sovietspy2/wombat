@@ -5,6 +5,7 @@ import com.fun.wombat.repository.AuthenticationUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.fun.wombat.model.Language;
@@ -21,11 +22,9 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public String register(@RequestParam("user") String name,
-                           @RequestParam("password") String password,
-                           @RequestParam("language") Language language) throws Exception {
+    public String register(@RequestBody AuthenticationUser wannaBeUser) throws Exception {
 
-        Optional<AuthenticationUser> user = authenticationUserRepository.findAuthenticationUserByName(name);
+        Optional<AuthenticationUser> user = authenticationUserRepository.findAuthenticationUserByName(wannaBeUser.getName());
 
         if (user.isPresent()) {
             throw new Exception("USER ALREADY EXIST WITH THIS NAME");
@@ -33,8 +32,9 @@ public class AuthController {
 
 
         AuthenticationUser newUser = AuthenticationUser.builder()
-                .name(name)
-                .password(bCryptPasswordEncoder.encode(password).toString())
+                .name(wannaBeUser.getName())
+                .password(bCryptPasswordEncoder.encode(wannaBeUser.getPassword()))
+                .language(wannaBeUser.getLanguage())
                 .build();
 
 
