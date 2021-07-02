@@ -58,7 +58,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                 .withExpiresAt(new Date(System.currentTimeMillis() + 60_000))
                 .sign(Algorithm.HMAC512(SECRET.getBytes()));
 
-        String body = ((CustomUserDetail) auth.getPrincipal()).getUsername() + " " + token;
+        //String body = ((CustomUserDetail) auth.getPrincipal()).getUsername() + " " + token;
+        String body = token;
 
         res.getWriter().write(body);
         res.getWriter().flush();
